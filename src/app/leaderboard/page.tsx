@@ -18,7 +18,7 @@ export default async function Leaderboard() {
     <div className="py-8 flex flex-col gap-6">
       <div className="flex items-center gap-3">
         <BackButton />
-        <h1 className="text-3xl text-balance flex items-center">
+        <h1 className="text-3xl max-md:text-xl text-balance flex items-center">
           <span className="text-[#34B27B]">supa</span>-aim &nbsp;
           <span>leaderboard 🏆</span>
         </h1>

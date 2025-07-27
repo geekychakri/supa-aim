@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
-      <body className="px-8">{children}</body>
+      <body className="px-8 max-md:px-4">{children}</body>
     </html>
   );
 }

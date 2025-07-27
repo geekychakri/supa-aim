@@ -27,7 +27,9 @@ export default function Playground() {
   const playgroudRef = useRef<HTMLDivElement | null>(null);
 
   const [playHitSound] = useSound("/tap.wav");
-  const [playCelebrationSound] = useSound("/celebration.wav");
+  const [playCelebrationSound] = useSound("/celebration.wav", {
+    volume: 0.5,
+  });
 
   const router = useRouter();
 
@@ -137,7 +139,7 @@ export default function Playground() {
         <div className="flex-1 relative" ref={playgroudRef}>
           <div>
             {!gameStarted && !gameComplete && (
-              <div className="absolute inset-0 flex items-center justify-center">
+              <div className="absolute inset-0 flex items-center justify-center max-md:px-2">
                 <div className="flex items-center text-center flex-col gap-8">
                   <h1 className="text-4xl font-medium">
                     <span className="text-[#34B27B]">supa</span>-aim
@@ -191,9 +193,14 @@ export default function Playground() {
                   </div>
 
                   <p className="flex text-lg flex-col gap-2 text-text-secondary">
-                    <span>Hit 30 supa-aim targets as fast as you can!</span>
+                    <span className="text-pretty">
+                      Hit 30 supa-aim targets as fast as you can!
+                    </span>
                   </p>
-                  <form className="flex gap-4" onSubmit={handleStartSubmit}>
+                  <form
+                    className="flex gap-4 max-md:flex max-md:flex-col"
+                    onSubmit={handleStartSubmit}
+                  >
                     <input
                       required
                       type="text"
@@ -275,11 +282,9 @@ export default function Playground() {
                 className="border-shadow rounded-full size-[110px] flex justify-center items-center absolute cursor-crosshair  transition-all duration-200  animate-fadeIn"
                 style={{
                   left:
-                    currentTarget.x ||
-                    `${Math.floor(Math.random() * 200) + 100}px`,
+                    currentTarget.x || `${Math.floor(Math.random() * 200)}px`,
                   top:
-                    currentTarget.y ||
-                    `${Math.floor(Math.random() * 300) + 100}px`,
+                    currentTarget.y || `${Math.floor(Math.random() * 300)}px`,
                 }}
                 onClick={hitTarget}
               >
